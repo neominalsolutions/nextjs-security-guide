@@ -7,6 +7,10 @@ const SECRET = process.env.JWT_SECRET;
 // Hangi sayfaları korumak istediğimizi belirleyelim
 const protectedRoutes = ['/dashboard', '/profile'];
 
+// Not: Token bilgileri Client tarafta store edilmemeli
+// localStorage,Session Storage gibi bölgeler güvensiz
+// Oturum bilgileri serverside yöntilmeli, nextjs böyle bir şansımız var. middleware ile yönetim yapabiliriz.
+
 export async function middleware(req: NextRequest) {
 	console.log('middleware');
 
