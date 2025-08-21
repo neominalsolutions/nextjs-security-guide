@@ -6,7 +6,7 @@ export default function PasswordHasherClient() {
 	const [password, setPassword] = useState('');
 	const [result, setResult] = useState<{
 		salt?: string;
-		hash?: string;
+		base64Hash?: string;
 		error?: string;
 	} | null>(null);
 	const [loading, setLoading] = useState(false);
@@ -64,7 +64,7 @@ export default function PasswordHasherClient() {
 								<strong>Salt:</strong> {result.salt}
 							</p>
 							<p>
-								<strong>Hash:</strong> {result.hash}
+								<strong>Hash:</strong> {result.base64Hash}
 							</p>
 						</>
 					)}
