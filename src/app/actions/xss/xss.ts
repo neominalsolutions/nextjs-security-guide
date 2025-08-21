@@ -2,6 +2,11 @@ import DOMPurify from 'dompurify';
 import { JSDOM } from 'jsdom';
 import { z } from 'zod';
 
+// https://www.npmjs.com/package/yup
+// https://github.com/apostrophecms/sanitize-html
+// https://www.npmjs.com/package/dompurify
+// https://zod.dev/api
+
 // DOMPurify normalde tarayıcı ortamında çalışır
 // Bu sebeple Nodejs oratmında sanitize işlemi için sanal bir DOM ortamı gerekiyor.
 // Bunu JSDOM ile yapılandırıyoruz

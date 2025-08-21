@@ -11,3 +11,8 @@ export const { publicKey, privateKey } = crypto.generateKeyPairSync('rsa', {
 		format: 'pem',
 	},
 });
+
+// PRIVATE KEY Oluşturma (2048 Bit)
+// openssl genpkey -algorithm RSA -out private.pem -pkeyopt rsa_keygen_bits:2048
+// PUBLİC KEY Oluşturma
+// openssl rsa -in private.pem -pubout -out public.pem
