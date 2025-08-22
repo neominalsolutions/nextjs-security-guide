@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import { useState } from 'react';
@@ -27,7 +28,7 @@ export default function AESGCMClient() {
 			setIv(data.iv);
 			setAuthTag(data.authTag);
 			setDecrypted(data.decrypted);
-		} catch (err) {
+		} catch (err: any) {
 			setDecrypted('Sunucuya erişilemedi');
 		} finally {
 			setLoading(false);

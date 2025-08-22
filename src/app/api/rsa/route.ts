@@ -2,7 +2,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
 import { privateKey, publicKey } from './keys';
-
+import { validateSsrfRequest } from '@/app/lib/ssrf-request-validator';
 
 // RSA-OAEP’in Özellikleri
 
@@ -18,6 +18,8 @@ export async function POST(req: NextRequest) {
 		if (!text) {
 			return NextResponse.json({ error: 'Metin boş olamaz' }, { status: 400 });
 		}
+
+		await validateSsrfRequest(req.json());
 
 		// Metni şifrele (RSA-OAEP + public key)
 		const buffer = Buffer.from(text, 'utf8');

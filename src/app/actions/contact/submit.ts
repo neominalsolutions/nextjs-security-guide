@@ -9,8 +9,10 @@ export async function contactSubmitForm(formData: FormData) {
 	const tokenCookie = cookieStore.get('csrfToken')?.value;
 	const tokenForm = formData.get('csrfToken');
 
-	// FormData için kullanım örneği
-	await validateSsrfRequest(formData);
+	if (process.env.NODE_ENV === 'production') {
+		// FormData için kullanım örneği
+		await validateSsrfRequest(formData);
+	}
 
 	console.log('tokenCookie', tokenCookie);
 	console.log('tokenForm', tokenForm);

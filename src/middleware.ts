@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { jwtVerify } from 'jose'; // jose kütüphanesini kullanıyoruz
+import { validateUrl } from './app/lib/ssrf-request-validator';
 
 const SECRET = process.env.JWT_SECRET;
 
@@ -11,12 +12,17 @@ const protectedRoutes = ['/dashboard', '/profile'];
 // localStorage,Session Storage gibi bölgeler güvensiz
 // Oturum bilgileri serverside yöntilmeli, nextjs böyle bir şansımız var. middleware ile yönetim yapabiliriz.
 
+// Nextjs middlewareler Edge tabanlı çalıştırıkların hızlı, performaslı işlemeleri açısında bu midldwarelerde body ve formdata gibi süreçlerin kontrolünü manuplasyonunu sağlıyamıyoruz.
+// request header, cookies, req.url gibi bazı kontroller yapabiliriz.
 export async function middleware(req: NextRequest) {
 	console.log('middleware');
 
 	const { pathname } = req.nextUrl;
 
-	debugger;
+	// istek yapılan Urllerin SSRF açısında kontrolü
+	if (process.env.NODE_ENV === 'production') {
+		await validateUrl(req.url);
+	}
 
 	// Eğer protected route değilse -> devam et
 	if (!protectedRoutes.some((route) => pathname.startsWith(route))) {

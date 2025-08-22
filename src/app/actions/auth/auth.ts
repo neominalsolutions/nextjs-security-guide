@@ -1,10 +1,9 @@
 'use server';
 
+import { SignJWT } from 'jose';
 import { cookies } from 'next/headers';
-import jwt from 'jsonwebtoken';
 import { redirect } from 'next/navigation'; // Redirect'i import et
 const SECRET = process.env.JWT_SECRET;
-import { jwtVerify, SignJWT } from 'jose';
 
 console.log('SECRET', SECRET);
 

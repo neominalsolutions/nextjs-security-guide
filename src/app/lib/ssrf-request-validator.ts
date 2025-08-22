@@ -41,10 +41,11 @@ function isPrivateIP(ip: string) {
 }
 
 // URL validasyonu
-async function validateUrl(urlStr: string) {
+export async function validateUrl(urlStr: string) {
 	try {
 		const url = new URL(urlStr);
 
+		// farklı protokollere bir saldırı mümkün sadece http ve https kontrolü yaptık.
 		if (!['http:', 'https:'].includes(url.protocol)) {
 			throw new Error('Only http/https allowed');
 		}

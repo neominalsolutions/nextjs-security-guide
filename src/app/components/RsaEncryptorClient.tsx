@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { proxyFetch } from '../lib/proxy-fetch';
 
 export default function RSAEncryptorClient() {
 	const [text, setText] = useState('');
@@ -15,10 +16,11 @@ export default function RSAEncryptorClient() {
 		setDecrypted('');
 
 		try {
-			const res = await fetch('/api/rsa', {
+			const res = await proxyFetch('/api/rsa', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ text }),
+				timeoutMs: 5000,
 			});
 
 			const data = await res.json();
