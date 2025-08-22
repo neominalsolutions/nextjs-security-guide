@@ -1,0 +1,10 @@
+https://cwe.mitre.org/index.html
+https://www.cve.org/CVERecord
+https://www.first.org/cvss/v4-0/examples
+https://www.first.org/cvss/calculator/3-0
+https://portswigger.net/
+https://wiki.sei.cmu.edu/confluence/display/seccode?utm_source=chatgpt.com
+https://owasp.org/API-Security/editions/2023/en/0x11-t10/
+https://owasp.org/www-project-top-ten/
+https://cheatsheetseries.owasp.org/
+https://snyk.io/advisor/

