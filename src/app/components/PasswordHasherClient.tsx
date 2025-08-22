@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { proxyFetch } from '../lib/proxy-fetch';
 
 export default function PasswordHasherClient() {
 	const [password, setPassword] = useState('');
@@ -19,11 +20,11 @@ export default function PasswordHasherClient() {
 		setResult(null);
 
 		try {
-			const endpoint = 'http://localhost:3000/api/hashPassword';
-			const res = await fetch('/api/proxy', {
+			const res = await proxyFetch('/api/hashPassword', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ password, endpoint }),
+				body: JSON.stringify({ password }),
+				timeoutMs: 5000,
 			});
 
 			const data = await res.json();
