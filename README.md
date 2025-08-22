@@ -37,7 +37,14 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Semgrep
 
-pip install semgrep
+pip install semgrep (Cmd Admin)
 semgrep login
 semgrep ci
 semgrep --auth <API_TOKEN>
+
+
+## SNYK
+## Eslint Security
+## Semgrep
+## SonarQube
+
