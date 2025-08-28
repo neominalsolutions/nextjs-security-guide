@@ -45,7 +45,7 @@ const securityHeaders = [
 		key: 'Content-Security-Policy', // Dev Modda Nextjs Inline script style kullanırız. Bu engele takılamamk için
 		value: isDev
 			? "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';"
-			: "default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self';",
+			: "default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self'; frame-src 'none';connect-src 'self'; img-src 'self' data: https:;",
 	},
 	// Cross-site scripting ve tıklama saldırılarını önlemek
 	{

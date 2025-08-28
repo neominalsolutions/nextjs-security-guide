@@ -3,18 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 
 import { createLogger, format, transports } from 'winston';
-import { ElasticsearchTransport } from 'winston-elasticsearch';
-
-const esTransport = new ElasticsearchTransport({
-	level: 'info',
-	clientOpts: { node: 'http://localhost:9200' }, // Elasticsearch URL
-	indexPrefix: 'nodejs-logs',
-});
-
-export const logger = createLogger({
-	format: format.combine(format.timestamp(), format.json()),
-	transports: [new transports.Console(), esTransport],
-});
+import Script from 'next/script';
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -38,9 +27,17 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
+			{/* <Script
+				src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+				integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+				crossOrigin="anonymous"
+				referrerPolicy="no-referrer"
+			></Script> */}
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
 				{children}
 			</body>
+
+			{/* SubResource Integrity SRI */}
 		</html>
 	);
 }

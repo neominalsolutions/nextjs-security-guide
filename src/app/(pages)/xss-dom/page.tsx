@@ -2,6 +2,8 @@ import DangerousSetInnerHtmlSanizate from '@/app/components/DangerousSetInnerHtm
 
 // app/page.tsx
 export default function Page() {
+	const uri = `http://localhost:3000/?content=<img src=x onerror=alert('XSS')>`;
+
 	return (
 		<div>
 			{/* <h3>Güvenlik Açığı oluşturan Kullanım</h3> */}
@@ -11,6 +13,7 @@ export default function Page() {
 					__html: `http://localhost:3000/?content=<img src=x onerror=alert('XSS')>`,
 				}}
 			/> */}
+			{/* <div>{uri}</div> */}
 			<hr />
 			<DangerousSetInnerHtmlSanizate />
 		</div>

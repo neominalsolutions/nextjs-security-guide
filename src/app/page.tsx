@@ -1,11 +1,8 @@
 import Image from 'next/image';
 import styles from './page.module.css';
 import Link from 'next/link';
-import { logger } from './layout';
 
 export default function Home() {
-	logger.log('info', 'Anasayfaya erişim sağlandı');
-
 	return (
 		<div className={styles.page}>
 			<main className={styles.main}>
