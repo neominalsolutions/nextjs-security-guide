@@ -58,7 +58,7 @@ const securityHeaders = [
 	},
 	{
 		key: 'Access-Control-Allow-Methods',
-		value: 'GET,POST,PUT,DELETE,OPTIONS',
+		value: 'GET,POST,OPTIONS',
 	},
 	{
 		key: 'Access-Control-Allow-Headers', // Access-Control-Allow-Headers: Content-Type, Authorization → cross origin isteklerinde (GET,POST,PUT,DELETE) tarayıcıya izin verilen header’ları bildirir.  Same-origin istekler (aynı domain) için bu kısıtlama yoktur.
@@ -66,7 +66,7 @@ const securityHeaders = [
 		value: 'Content-Type,Authorization',
 	},
 	{
-		key: 'Access-Control-Allow-Credentials', // Default olarak Tarayıcı, cross-origin request’lerde cookie veya authorization header göndermez. Eğer bu özellik açılırsa, Tarayıcı cross-origin request yaparken cookie’leri, HTTP authentication header’larını veya client sertifikalarını gönderebilir. Access-Control-Allow-Origin: * ile birlikte kullanılamaz.
+		key: 'Access-Control-Allow-Credentials', // Default olarak Tarayıcı, cross-origin request’lerde cookie göndermez. Eğer bu özellik açılırsa, Tarayıcı cross-origin request yaparken cookie’leri, HTTP authentication header’larını veya client sertifikalarını gönderebilir. Access-Control-Allow-Origin: * ile birlikte kullanılamaz.
 		// Bu özelliği kullanabilmek için axios da withCredentials: true olarak gönderim sağlanmalıdır. Bunu kullanırken JWT veya session cookie’lerini HttpOnly ve Secure yap
 		value: 'true',
 	},
